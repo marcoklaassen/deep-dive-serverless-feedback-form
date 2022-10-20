@@ -6,18 +6,14 @@ metadata:
 spec:
   params:
     - name: git-url
-      value: 'https://github.com/marcoklaassen/deep-dive-serverless'
+      value: 'https://github.com/marcoklaassen/deep-dive-serverless-feedback-form'
     - name: git-revision
       value: main
     - name: IMAGE
       value: >-
         image-registry.openshift-image-registry.svc:5000/serverless-demo/feedback-form
-    - name: DOCKERFILE
-      value: feedback-form/src/main/docker/Dockerfile.native
     - name: APPVERSION
       value: latest
-    - name: workingDir
-      value: /feedback-form
   pipelineRef:
     name: quarkus-native-pipeline
   workspaces:
@@ -28,4 +24,4 @@ spec:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 1Gi
+              storage: 500Mi

@@ -1,0 +1,42 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  namespace: serverless-demo
+  name: feedback-form
+spec:
+  selector:
+    app: feedback-form
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: feedback-form
+    spec:
+      containers:
+        - name: feedback-form
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/serverless-demo/feedback-form:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: kafka-bootstrap-servers
+              valueFrom:
+                secretKeyRef:
+                  key: kafka.bootstrap.servers
+                  name: kafka-config
+            - name: kafka-sasl-jaas-config
+              valueFrom:
+                secretKeyRef:
+                  key: sasl.jaas.config
+                  name: feedback-user
+  strategy:
+    type: Rolling
+    rollingParams:
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+  triggers:
+    - type: ConfigChange
