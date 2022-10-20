@@ -6,6 +6,7 @@ metadata:
 spec:
   template:
     metadata:
+      name: feedback-form-02
       annotations:
         autoscaling.knative.dev/min-scale: "0"
         autoscaling.knative.dev/max-scale: "5"
@@ -25,4 +26,4 @@ spec:
                   key: sasl.jaas.config
                   name: feedback-user
             - name: VERSION
-              value: 0.1
+              value: '0.2'

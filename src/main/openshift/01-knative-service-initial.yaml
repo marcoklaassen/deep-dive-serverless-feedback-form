@@ -1,0 +1,26 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: feedback-form
+  namespace: serverless-demo
+spec:
+  template:
+    metadata:
+      name: feedback-form-01
+    spec:
+      containers:
+        - image: >-
+            image-registry.openshift-image-registry.svc:5000/serverless-demo/feedback-form:0.1
+          env:
+            - name: kafka-bootstrap-servers
+              valueFrom:
+                secretKeyRef:
+                  key: kafka.bootstrap.servers
+                  name: kafka-config
+            - name: kafka-sasl-jaas-config
+              valueFrom:
+                secretKeyRef:
+                  key: sasl.jaas.config
+                  name: feedback-user
+            - name: VERSION
+              value: '0.1'
