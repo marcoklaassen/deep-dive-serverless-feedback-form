@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - image: >-
-            image-registry.openshift-image-registry.svc:5000/serverless-demo/feedback-form:latest
+            image-registry.openshift-image-registry.svc:5000/serverless-demo/feedback-form:0.1
           env:
             - name: kafka-bootstrap-servers
               valueFrom:
@@ -24,3 +24,5 @@ spec:
                 secretKeyRef:
                   key: sasl.jaas.config
                   name: feedback-user
+            - name: VERSION
+              value: 0.1

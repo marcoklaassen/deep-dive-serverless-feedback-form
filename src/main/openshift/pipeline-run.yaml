@@ -13,7 +13,7 @@ spec:
       value: >-
         image-registry.openshift-image-registry.svc:5000/serverless-demo/feedback-form
     - name: APPVERSION
-      value: latest
+      value: 0.1
   pipelineRef:
     name: quarkus-native-pipeline
   workspaces:

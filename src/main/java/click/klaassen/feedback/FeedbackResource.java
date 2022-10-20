@@ -1,6 +1,7 @@
 package click.klaassen.feedback;
 
 import lombok.extern.slf4j.Slf4j;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -12,6 +13,9 @@ import javax.ws.rs.core.MediaType;
 @Slf4j
 public class FeedbackResource {
 
+    @ConfigProperty(name = "feedback.version")
+    String version;
+
     @Inject FeedbackService service;
 
     @POST
@@ -19,5 +23,10 @@ public class FeedbackResource {
         log.info("Feedback form got rating: {}", feedback);
         service.publishFeedback(feedback.getRating());
         return feedback;
+    }
+
+    @GET
+    public String version() {
+        return version;
     }
 }
