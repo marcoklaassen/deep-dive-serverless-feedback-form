@@ -19,8 +19,7 @@ public class FeedbackResource {
 
     @ConfigProperty(name = "feedback.version")
     String version;
-
-    @Inject SecurityIdentity securityIdentity;
+    
     @Inject FeedbackService service;
     @Inject UserInfo userInfo;
 
