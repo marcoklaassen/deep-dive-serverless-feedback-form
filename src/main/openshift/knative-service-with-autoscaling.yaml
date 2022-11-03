@@ -26,4 +26,4 @@ spec:
                   key: sasl.jaas.config
                   name: feedback-user
             - name: VERSION
-              value: '0.2'
+              value: '0.1'
