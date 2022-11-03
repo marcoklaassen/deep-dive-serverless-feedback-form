@@ -6,7 +6,6 @@ metadata:
 spec:
   template:
     metadata:
-      name: feedback-form-01
       annotations:
         autoscaling.knative.dev/min-scale: "0"
         autoscaling.knative.dev/max-scale: "5"
@@ -25,5 +24,17 @@ spec:
                 secretKeyRef:
                   key: sasl.jaas.config
                   name: feedback-user
+            - name: oidc-client-id
+              valueFrom:
+                secretKeyRef:
+                  key: CLIENT_ID
+                  name: keycloak-client-secret-feedback-form-client
+            - name: oidc-client-secret
+                valueFrom:
+                  secretKeyRef:
+                    key: CLIENT_SECRET
+                    name: keycloak-client-secret-feedback-form-client
+            - name: oidc-auth-url
+              value: "https://keycloak-deep-dive-quarkus.apps.ocp4.klaassen.click/auth/"
             - name: VERSION
               value: '0.1'
