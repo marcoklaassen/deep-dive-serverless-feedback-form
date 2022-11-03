@@ -2,16 +2,16 @@ apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
   generateName: feedback-form-pipeline-run-
-  namespace: serverless-demo
+  namespace: deep-dive-quarkus
 spec:
   params:
     - name: git-url
       value: 'https://github.com/marcoklaassen/deep-dive-serverless-feedback-form'
     - name: git-revision
-      value: serverless
+      value: quarkus-deep-dive-2
     - name: IMAGE
       value: >-
-        image-registry.openshift-image-registry.svc:5000/serverless-demo/feedback-form
+        image-registry.openshift-image-registry.svc:5000/deep-dive-quarkus/feedback-form
     - name: APPVERSION
       value: 0.1
   pipelineRef:
