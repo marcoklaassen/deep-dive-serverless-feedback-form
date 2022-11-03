@@ -1,5 +1,6 @@
 package click.klaassen.feedback;
 
+import io.quarkus.oidc.UserInfo;
 import io.quarkus.security.Authenticated;
 import io.quarkus.security.identity.SecurityIdentity;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +22,13 @@ public class FeedbackResource {
 
     @Inject SecurityIdentity securityIdentity;
     @Inject FeedbackService service;
+    @Inject UserInfo userInfo;
 
     @POST
     @NoCache
     @Authenticated
     public Feedback add(Feedback feedback) {
-        log.info("Feedback form got rating: {} from user {}", feedback, new User(securityIdentity));
+        log.info("Feedback form got rating: {} from user {}", feedback, new User(userInfo));
         service.publishFeedback(feedback.getRating());
         return feedback;
     }

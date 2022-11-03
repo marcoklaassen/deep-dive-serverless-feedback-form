@@ -35,6 +35,6 @@ spec:
                   key: CLIENT_SECRET
                   name: keycloak-client-secret-feedback-form-client
             - name: oidc-auth-url
-              value: "https://keycloak-deep-dive-quarkus.apps.ocp4.klaassen.click/auth/"
+              value: "https://keycloak-deep-dive-quarkus.apps.ocp4.klaassen.click/auth/realms/quarkus-deep-dive"
             - name: VERSION
               value: '0.1'

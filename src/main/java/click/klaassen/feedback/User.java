@@ -1,12 +1,14 @@
 package click.klaassen.feedback;
 
-import io.quarkus.security.identity.SecurityIdentity;
+import io.quarkus.oidc.UserInfo;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 @Data
+@Slf4j
 public class User {
     private final String userName;
-    User(SecurityIdentity securityIdentity) {
-        this.userName = securityIdentity.getPrincipal().getName();
+    User(UserInfo securityIdentity) {
+        this.userName = securityIdentity.getUserInfoString();
     }
 }
