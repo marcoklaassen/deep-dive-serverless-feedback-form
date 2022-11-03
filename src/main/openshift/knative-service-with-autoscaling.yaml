@@ -30,10 +30,10 @@ spec:
                   key: CLIENT_ID
                   name: keycloak-client-secret-feedback-form-client
             - name: oidc-client-secret
-                valueFrom:
-                  secretKeyRef:
-                    key: CLIENT_SECRET
-                    name: keycloak-client-secret-feedback-form-client
+              valueFrom:
+                secretKeyRef:
+                  key: CLIENT_SECRET
+                  name: keycloak-client-secret-feedback-form-client
             - name: oidc-auth-url
               value: "https://keycloak-deep-dive-quarkus.apps.ocp4.klaassen.click/auth/"
             - name: VERSION
