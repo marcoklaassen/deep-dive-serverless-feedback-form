@@ -11,7 +11,7 @@ spec:
       value: kafka-deep-dive
     - name: IMAGE
       value: >-
-        image-registry.openshift-image-registry.svc:5000/deep-dive-quarkus/feedback-form
+        image-registry.openshift-image-registry.svc:5000/deep-dive-kafka/feedback-form
     - name: APPVERSION
       value: 0.1
   pipelineRef:
