@@ -9,9 +9,9 @@ public class FeedbackService {
 
     @Inject
     @Channel("feedback-topic-out")
-    Emitter<Integer> emitter;
+    Emitter<Feedback> emitter;
 
-    void publishFeedback(Integer rating) {
-        emitter.send(rating);
+    void publishFeedback(Feedback feedback) {
+        emitter.send(feedback);
     }
 }

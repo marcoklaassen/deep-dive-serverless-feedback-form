@@ -27,7 +27,7 @@ public class FeedbackResource {
     @Authenticated
     public Feedback add(Feedback feedback) {
         log.info("Feedback form got rating: {} from user {}", feedback, new User(userInfo));
-        service.publishFeedback(feedback.getRating());
+        service.publishFeedback(feedback);
         return feedback;
     }
 
